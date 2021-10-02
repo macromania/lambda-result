@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/macromania/lambda-result#readme",
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.83",
     "typescript": "^4.4.3"
   }
 }
