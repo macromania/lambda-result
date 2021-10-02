@@ -28,7 +28,7 @@ export class ErrorResult {
         const errorResult: APIGatewayProxyResult = {
             statusCode: 401,
             body: JSON.stringify({
-                errorType: "Anauthorized",
+                errorType: "Unauthorized",
                 errorMessage: "No Access",
             }),
         };
