@@ -19,6 +19,7 @@
   "bugs": {
     "url": "https://github.com/macromania/lambda-result/issues"
   },
+  "files": ["lib/**/*"],
   "homepage": "https://github.com/macromania/lambda-result#readme",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.83",
