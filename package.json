@@ -1,0 +1,20 @@
+{
+  "name": "lambda-result",
+  "version": "1.0.0",
+  "description": "API Gateway Proxy Result Wrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macromania/lambda-result.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/macromania/lambda-result/issues"
+  },
+  "homepage": "https://github.com/macromania/lambda-result#readme"
+}
