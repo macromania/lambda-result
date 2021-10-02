@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/macromania/lambda-result/issues"
   },
-  "homepage": "https://github.com/macromania/lambda-result#readme"
+  "homepage": "https://github.com/macromania/lambda-result#readme",
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  }
 }
