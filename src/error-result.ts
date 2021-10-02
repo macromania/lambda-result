@@ -1,5 +1,5 @@
 import { APIGatewayProxyResult } from 'aws-lambda';
-import { ErrorResponse, ServiceResult } from './index';
+import { ErrorResponse } from './index';
 
 export class ErrorResult {
     static response(type: string, message: string): APIGatewayProxyResult {
@@ -33,21 +33,5 @@ export class ErrorResult {
             }),
         };
         return errorResult;
-    }
-}
-
-export class SuccessResult {
-    static response<T>(result: ServiceResult<T>) {
-        const response: APIGatewayProxyResult = {
-            statusCode: result.statusCode,
-            body: JSON.stringify({
-                status: result.status,
-                data: result.content,
-                error: result.error,
-            }),
-        };
-
-        console.info(`Response:: ${JSON.stringify(response, null, 2)}`);
-        return response;
     }
 }
