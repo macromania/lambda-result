@@ -1,5 +1,5 @@
-import { APIGatewayProxyResult } from "aws-lambda";
-import { ErrorResponse, ServiceResult } from "./index";
+import { APIGatewayProxyResult } from 'aws-lambda';
+import { ErrorResponse, ServiceResult } from './index';
 
 export class ErrorResult {
     static response(type: string, message: string): APIGatewayProxyResult {
@@ -17,8 +17,8 @@ export class ErrorResult {
         const errorResult: APIGatewayProxyResult = {
             statusCode: 400,
             body: JSON.stringify({
-                errorType: error?.errorType ?? "An Error",
-                errorMessage: error?.errorMessage ?? "Please try again later",
+                errorType: error?.errorType ?? 'An Error',
+                errorMessage: error?.errorMessage ?? 'Please try again later',
             }),
         };
         return errorResult;
@@ -28,8 +28,8 @@ export class ErrorResult {
         const errorResult: APIGatewayProxyResult = {
             statusCode: 401,
             body: JSON.stringify({
-                errorType: "Unauthorized",
-                errorMessage: "No Access",
+                errorType: 'Unauthorized',
+                errorMessage: 'No Access',
             }),
         };
         return errorResult;

@@ -18,7 +18,7 @@ export class ServiceResult<T> {
         this.success = success;
         this.failure = !success;
         this.statusCode = success ? 200 : 400;
-        this.status = success ? "Success" : "Error";
+        this.status = success ? 'Success' : 'Error';
     }
 
     public static Succeeded<T>(content: T): ServiceResult<T> {
