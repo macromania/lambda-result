@@ -29,3 +29,6 @@ export class ServiceResult<T> {
         return new ServiceResult<T>(null, error, false);
     }
 }
+
+export { SuccessResult } from './success-result';
+export { ErrorResult } from './error-result';
