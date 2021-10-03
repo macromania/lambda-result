@@ -1,6 +1,5 @@
 import { APIGatewayProxyEvent } from 'aws-lambda';
-import { SuccessResult } from 'lambda-result/lib/success-result';
-import { ErrorResult } from 'lambda-result/lib/error-result';
+import { SuccessResult, ErrorResult } from 'lambda-result';
 import { Service } from './service';
 import { ServiceValidator } from './validator';
 
