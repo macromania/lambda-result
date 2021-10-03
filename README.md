@@ -74,12 +74,21 @@ Recently, I have used this pattern a lot and am keen to provide this as a public
 ## Usage
 
 ```typescript
+import { APIGatewayProxyEvent } from 'aws-lambda';
+import { SuccessResult } from 'lambda-result/lib/success-result';
+import { ErrorResult } from 'lambda-result/lib/error-result';
+import { Service } from './service';
+import { ServiceValidator } from './validator';
+
 exports.handler = async (event: APIGatewayProxyEvent) => {
     // Validate incoming payload and convert to request
     const request = ServiceValidator.validate(event);
+    if (request.failure) {
+        return ErrorResult.responseFromFailure(request.error);
+    }
 
     // Run request via server (Adaptor pattern)
-    const result = await myService.doSomething(request);
+    const result = Service.doSomething(request.content!);
 
     // If service results a failure/error, return with API Gateway Proxy compatible result
     if (result.failure) {
@@ -90,27 +99,23 @@ exports.handler = async (event: APIGatewayProxyEvent) => {
     // Return an API Gateway Proxy compatible result
     return SuccessResult.response(result);
 };
+
 ```
 
 The same simplicity will be achieved at the service layer with something like this:
 
 ```typescript
 
-export class MyService {
+import { ServiceResult } from 'lambda-result';
+import { ServiceRequest, ServiceResponse } from './service-types';
 
-  async function doSomething(request: MyServiceRequest): Promise<ServiceResult<MyServiceResponse>> {
-
-      try {
-          const someOperationResult = await someThingElse.process(request);
-          return ServiceResult.Succeeded(someOperationResult);
-      }
-      catch(e) {
-          return ServiceResult.Failed({
-                errorMessage: e,
-                errorType: 'OperationError',
-          });
-      }
-  }
+export class Service {
+    public static doSomething(request: ServiceRequest): ServiceResult<ServiceResponse> {
+        const message: ServiceResponse = {
+            message: `Hello ${request.name}!`,
+        };
+        return ServiceResult.Succeeded(message);
+    }
 }
 
 ```
